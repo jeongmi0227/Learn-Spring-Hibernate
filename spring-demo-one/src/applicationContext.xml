@@ -6,10 +6,24 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-
+    <!-- load the properties file: sport.properties-->
+    <context:property-placeholder location="classpath:sport.properties"/>
     <!-- Define your beans here -->
+    <!-- Define the dependency -->
+    <bean id="myFortuneService"
+          class="com.jeongmi0227.springdemo.HappyFortuneService">
+    </bean>
+
+    <bean id="myRandomFortuneService"
+          class="com.jeongmi0227.springdemo.RandomFortuneService">
+
+    </bean>
+
     <bean id="myCoach"
-          class="com.jeongmi0227.springdemo.BaseballCoach">
+          class="com.jeongmi0227.springdemo.TrackCoach">
+        <!--set up constuctor injection-->
+
+        <constructor-arg ref="myRandomFortuneService"/>
     </bean>
 
     <!--
@@ -20,6 +34,15 @@
     <bean id="myLoggerConfig" class="com.jeongmi0227.springdemo.MyLoggerConfig" init-method="initLogger">
         <property name="rootLoggerLevel" value="FINE" />
         <property name="printedLoggerLevel" value="FINE"/>
+    </bean>
+
+    <bean id="myCricketCoach"
+          class ="com.jeongmi0227.springdemo.CricketCoach">
+        <!--set up setter injection-->
+        <property name="fortuneService" ref="myRandomFortuneService"/>
+        <!-- inject literal values -->
+        <property name="emailAddress" value="${foo.email}"/>
+        <property name="team" value="${foo.team}"/>
     </bean>
 </beans>
 
