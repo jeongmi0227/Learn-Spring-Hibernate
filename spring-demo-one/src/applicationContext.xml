@@ -10,6 +10,26 @@
     <context:property-placeholder location="classpath:sport.properties"/>
     <!-- Define your beans here -->
     <!-- Define the dependency -->
+
+    <!--
+    Bean Scopes
+    - Scope refers to the lifecycle of a bean
+    Default scope is singleton
+        * What is a singleton?
+        - Spring container creates only one instances of the bean, by default
+        - It is cached in memory
+        - All requests for the bean
+         - will return a SHARED reference to the SAME bean
+
+    prototype scope: new object for each request
+    prototype scope is good for keeping track fo stateful data.
+    - How long does the bean live?
+
+    - How many instances are created?
+
+    - How is the bean shared?
+
+    -->
     <bean id="myFortuneService"
           class="com.jeongmi0227.springdemo.HappyFortuneService">
     </bean>
