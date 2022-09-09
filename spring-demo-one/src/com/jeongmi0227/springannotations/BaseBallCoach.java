@@ -16,4 +16,9 @@ public class BaseBallCoach implements Coach{
     public String getDailyWorkout() {
         return "Practice Baseball";
     }
+
+    @Override
+    public String getDailyFortune() {
+        return null;
+    }
 }
